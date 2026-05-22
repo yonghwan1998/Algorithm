@@ -4,14 +4,15 @@ on:
   push:
     paths:
       # 아래 확장자 파일이 수정/추가되었을 때만 알림을 보냅니다.
-      - '**.java'   # Java
-      - '**.c'      # C
-      - '**.cpp'    # C++
-      - '**.cc'     # C++ (가끔 이 확장자도 쓰임)
-      - '**.py'     # Python
-      - '**.kt'     # Kotlin
-      - '**.js'     # JavaScript
-      - '**.swift'  # Swift
+      - '**/*.java'
+      - '**/*.c'
+      - '**/*.cpp'
+      - '**/*.cc'
+      - '**/*.py'
+      - '**/*.kt'
+      - '**/*.js'
+      - '**/*.swift'
+      - '**/*.md'
   workflow_dispatch:
 
 jobs:
