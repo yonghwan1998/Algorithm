@@ -2,17 +2,6 @@ name: Algorithm Quest Checker
 
 on:
   push:
-    paths:
-      # 아래 확장자 파일이 수정/추가되었을 때만 알림을 보냅니다.
-      - '**/*.java'
-      - '**/*.c'
-      - '**/*.cpp'
-      - '**/*.cc'
-      - '**/*.py'
-      - '**/*.kt'
-      - '**/*.js'
-      - '**/*.swift'
-      - '**/*.md'
   workflow_dispatch:
 
 jobs:
