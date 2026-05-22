@@ -1,9 +1,7 @@
 T = int(input())
 
-for test_case in range(1, 1 + T):
+for test_case in range(1, T + 1):
     N, K = map(int, input().split())
-
-    answer = 0
 
     dp = [0] * (K + 1)
 
