@@ -1,0 +1,59 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    N, M = list(map(int, input().split()))
+
+    list_fly = [list(map(int, input().split())) for _ in range(N)]
+
+    curr_x = 0
+    curr_y = 0
+
+    answer = 0
+
+    for n in range(N ** 2):
+
+        curr_x = n // N
+        curr_y = n % N
+
+        sum_cross = 0
+        sum_diagonal = 0
+
+        # 가로
+        for i in range(-M + 1, M):
+            ny = curr_y + i
+            if ny < 0 or ny >= N: continue
+
+            sum_cross += list_fly[curr_x][ny]
+
+        # 세로
+        for j in range(-M + 1, M):
+            nx = curr_x + j
+            if nx < 0 or nx >= N: continue
+
+            sum_cross += list_fly[nx][curr_y]
+
+        sum_cross -= list_fly[curr_x][curr_y]
+
+        # 대각(\)
+        for k in range(-M + 1, M):
+            nx = curr_x + k
+            ny = curr_y + k
+
+            if nx < 0 or ny < 0 or nx >= N or ny >= N: continue
+
+            sum_diagonal += list_fly[nx][ny]
+
+        # 대각(/)
+        for l in range(-M + 1, M):
+            nx = curr_x + l
+            ny = curr_y - l
+
+            if nx < 0 or ny < 0 or nx >= N or ny >= N: continue
+
+            sum_diagonal += list_fly[nx][ny]
+
+        sum_diagonal -= list_fly[curr_x][curr_y]
+
+        answer = max(answer, sum_cross, sum_diagonal)
+
+    print(f"#{test_case} {answer}")
