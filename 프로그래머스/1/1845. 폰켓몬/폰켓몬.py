@@ -1,7 +1,9 @@
 def solution(nums):
     answer = 0
-    cnt_n = len(nums) // 2
-    cnt_set = len(set(nums))
+    dict_phone = {}
     
-    answer = min(cnt_n, cnt_set)
+    for item in nums:
+        dict_phone[item] = True
+    
+    answer = min(len(dict_phone), len(nums) // 2)
     return answer
