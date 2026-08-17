@@ -1,16 +1,16 @@
 def solution(participant, completion):
     answer = ''
-    player_dict = {}
     
-    for p in participant:
-        player_dict[p] = player_dict.get(p, 0) + 1
+    dict_participant = {}
     
-    for c in completion:
-        player_dict[c] -= 1
+    for item in participant:
+        dict_participant[item] = dict_participant.get(item, 0) + 1
         
-    for k, v in player_dict.items():
-        if v == 1:
-            answer = k
-            break
+    for item in completion:
+        dict_participant[item] = dict_participant[item] - 1
+        if not dict_participant[item]:
+            del dict_participant[item]
     
+    for key in dict_participant.keys():
+        answer = key
     return answer
