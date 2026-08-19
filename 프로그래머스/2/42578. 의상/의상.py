@@ -1,14 +1,15 @@
 def solution(clothes):
     answer = 0
-    hash_dict = {}
+    
+    dict_clothes = {}
     
     for k, v in clothes:
-        hash_dict[v] = hash_dict.get(v, 0) + 1
+        dict_clothes[v] = dict_clothes.get(v, 0) + 1
         
-    temp = 1        
-    for cnt in hash_dict.values():
-        temp *= (cnt + 1)
-    
+    temp = 1
+    for v in dict_clothes.values():
+        temp *= (v + 1)
+        
     answer = temp - 1
         
     return answer
