@@ -3,13 +3,12 @@ def solution(clothes):
     
     dict_clothes = {}
     
-    for k, v in clothes:
-        dict_clothes[v] = dict_clothes.get(v, 0) + 1
-        
+    for i in clothes:
+        dict_clothes[i[1]] = dict_clothes.get(i[1], 0) + 1
+
     temp = 1
-    for v in dict_clothes.values():
-        temp *= (v + 1)
-        
+    for cnt in dict_clothes.values():
+        temp *= (cnt + 1)
     answer = temp - 1
-        
+    
     return answer
