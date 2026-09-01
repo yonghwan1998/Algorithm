@@ -1,19 +1,25 @@
 T = int(input())
 
-for test_case in range(1, 1 + T):
+for test_case in range(1, T + 1):
+    result_n, result_cnt = 0, 0
+    
     N = int(input())
     a = input()
     
-    list_cnt = [0 for _ in range(10)]
-    
-    for index in a:
-        list_cnt[int(index)] += 1
-
-    max_cnt = 0
-    max_index = 0
+    # dict 만들기 {0: 0, 1: 0, ..., 9: 0}
+    dict_a = {}
     for i in range(10):
-        if list_cnt[i] >= max_cnt:
-            max_cnt = list_cnt[i]
-            max_index = i
-            
-    print(f"#{test_case} {max_index} {max_cnt}")
+        dict_a[i] = 0
+    
+    # for문으로 a 전체 돌면서 하나씩 빼오기
+    for item in a:
+        # dict에 맞는 거 +1하기
+        dict_a[int(item)] = dict_a[int(item)] + 1
+    
+    # dict 중 가장 큰 수 result에 넣기
+    for k, v in dict_a.items():
+        if result_cnt <= v:
+            result_n = k
+            result_cnt = v
+    
+    print(f'#{test_case} {result_n} {result_cnt}')
