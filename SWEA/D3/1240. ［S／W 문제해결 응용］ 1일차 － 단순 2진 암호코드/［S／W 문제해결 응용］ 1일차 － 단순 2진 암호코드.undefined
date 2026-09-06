@@ -1,0 +1,50 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    answer = 0
+    N, M = map(int, input().split())
+    list_hash = []
+    
+    code_dict = {
+        '0001101': 0,
+        '0011001': 1,
+        '0010011': 2,
+        '0111101': 3,
+        '0100011': 4,
+        '0110001': 5,
+        '0101111': 6,
+        '0111011': 7,
+        '0110111': 8,
+        '0001011': 9
+    }
+    
+    row = 0
+    hash_odd, hash_even = 0, 0
+    
+    for _ in range(N):
+        list_hash.append(input())
+    
+    for i in range(N):
+        if '1' in list_hash[i]:
+            row = i
+            break
+         
+    last_index = list_hash[row].rfind('1')
+    hashed_code = list_hash[row][last_index - 55:last_index + 1]
+
+    for index in range(8):
+        code = hashed_code[index * 7: (index + 1) * 7]
+        
+        num = code_dict[code]
+        
+        if index % 2 == 0:
+            hash_even += num
+        else:
+            hash_odd += num
+            
+    dehashed_code = hash_even * 3 + hash_odd
+    
+    if dehashed_code % 10 == 0:
+        answer = hash_even + hash_odd
+        
+    print(f'#{test_case} {answer}')
