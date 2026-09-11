@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <iostream>
 
 using namespace std;
 
@@ -16,6 +15,6 @@ vector<int> solution(vector<int> numbers) {
     
     sort(answer.begin(), answer.end());
     answer.erase(unique(answer.begin(), answer.end()), answer.end());
-        
+    
     return answer;
 }
