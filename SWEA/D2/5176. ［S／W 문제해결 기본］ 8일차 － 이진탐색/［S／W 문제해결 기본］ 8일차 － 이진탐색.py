@@ -1,24 +1,22 @@
 T = int(input())
 
-def inorder(v):
-    global num
-    
-    if v > N:
-        return
-    
-    inorder(v * 2)
-    tree[v] = num
-    
-    num += 1
-    
-    inorder(v * 2 + 1)
+def insert_preorder(idx):
+    global cnt
 
-for test_case in range(1, 1 + T):
+    if idx * 2 <= N and tree[idx * 2] == 0:
+        insert_preorder(idx * 2)
+
+    tree[idx] = cnt
+    cnt += 1
+
+    if idx * 2 + 1 <= N and tree[idx * 2 + 1] == 0:
+        insert_preorder(idx * 2 + 1)
+
+for test_case in range(1, T + 1):
     N = int(input())
-    
     tree = [0] * (N + 1)
-    num = 1
-    
-    inorder(1)
-    
-    print(f"#{test_case} {tree[1]} {tree[N // 2]}")
+    cnt = 1
+
+    insert_preorder(1)
+
+    print(f'#{test_case} {tree[1]} {tree[N // 2]}')
