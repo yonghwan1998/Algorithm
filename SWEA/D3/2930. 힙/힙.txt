@@ -1,0 +1,56 @@
+T = int(input())
+for test_case in range(1, T + 1):
+    answer = []
+
+    N = int(input())
+    graph = [0] * (N + 1)
+    pointer = 1
+
+    for _ in range(N):
+        action = list(map(int, input().split()))
+
+        if action[0] == 1:
+            graph[pointer] = action[1]
+            temp = pointer
+            pointer += 1
+
+            while temp > 1:
+                parent = temp // 2
+
+                if graph[temp] > graph[parent]:
+                    graph[temp], graph[parent] = graph[parent], graph[temp]
+                    temp = parent
+                else:
+                    break
+        else:
+            if pointer == 1:
+                answer.append(-1)
+                continue
+
+            answer.append(graph[1])
+
+            pointer -= 1
+            graph[1] = graph[pointer]
+            graph[pointer] = 0
+
+            temp = 1
+
+            while True:
+                left = temp * 2
+                right = temp * 2 + 1
+
+                if left >= pointer:
+                    break
+
+                child = left
+
+                if right < pointer and graph[right] > graph[left]:
+                    child = right
+
+                if graph[child] > graph[temp]:
+                    graph[child], graph[temp] = graph[temp], graph[child]
+                    temp = child
+                else:
+                    break
+
+    print(f'#{test_case}', *answer)
