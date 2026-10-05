@@ -1,0 +1,27 @@
+def dfs(index, end_time, total):
+    global answer
+
+    if index == N:
+        answer = max(answer, total)
+        return
+
+    if end_time <= arr[index][0]:
+        dfs(index + 1, arr[index][1], total + 1)
+
+    dfs(index + 1, end_time, total)
+
+T = int(input())
+
+for test_case in range(1, T + 1):
+    answer = 0
+
+    N = int(input())
+    arr = []
+
+    for _ in range(N):
+        arr.append(list(map(int, input().split())))
+
+    arr.sort()
+    dfs(0, 0, 0)
+
+    print(f'#{test_case} {answer}')
