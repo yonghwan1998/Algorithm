@@ -1,0 +1,17 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    answer = float('inf')
+
+    N, K = map(int, input().split())
+    arr = list(map(int, input().split()))
+
+    arr.sort()
+
+    for i in range(N - K + 1):
+        selected = arr[i:i + K]
+        max_selected = max(selected)
+        min_selected = min(selected)
+        answer = min(answer, max_selected - min_selected)
+
+    print(f'#{test_case} {answer}')
