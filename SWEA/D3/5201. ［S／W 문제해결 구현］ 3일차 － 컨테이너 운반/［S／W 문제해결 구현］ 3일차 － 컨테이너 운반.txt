@@ -1,0 +1,23 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    answer = 0
+
+    N, M = map(int, input().split())
+    arr_w = list(map(int, input().split()))
+    arr_t = list(map(int, input().split()))
+
+    arr_w.sort()
+    arr_t.sort()
+
+    while arr_t:
+        truck = arr_t.pop()
+
+        while arr_w:
+            weight = arr_w.pop()
+
+            if weight <= truck:
+                answer += weight
+                break
+
+    print(f'#{test_case} {answer}')
