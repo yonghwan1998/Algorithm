@@ -1,0 +1,4 @@
+SELECT
+    SUM(price) AS 'TOTAL_PRICE'
+FROM ITEM_INFO
+WHERE rarity = 'LEGEND';
