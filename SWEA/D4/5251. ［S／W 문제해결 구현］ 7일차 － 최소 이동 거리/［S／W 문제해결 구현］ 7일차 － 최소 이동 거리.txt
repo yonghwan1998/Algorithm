@@ -1,0 +1,38 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    N, E = map(int, input().split())
+    graph = [[] for _ in range(N + 1)]
+
+    for _ in range(E):
+        s, e, w = map(int, input().split())
+        graph[s].append((e, w))
+
+    distance = [float('inf')] * (N + 1)
+    visited = [False] * (N + 1)
+
+    distance[0] = 0
+
+    for _ in range(N + 1):
+        min_distance = float('inf')
+        node = -1
+
+        for i in range(N + 1):
+            if not visited[i] and distance[i] < min_distance:
+                min_distance = distance[i]
+                node = i
+
+        if node == -1:
+            break
+
+        if node == N:
+            break
+
+        visited[node] = True
+
+        for next_node, weight in graph[node]:
+            if not visited[next_node]:
+                if distance[next_node] > distance[node] + weight:
+                    distance[next_node] = distance[node] + weight
+
+    print(f'#{test_case} {distance[N]}')
