@@ -1,0 +1,18 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    n, a, b = map(int, input().split())
+
+    list_binomial = [[0] * (n + 1) for _ in range(n + 1)]
+    list_binomial[1][0] = 1
+    list_binomial[1][1] = 1
+
+    for row in range(2, n + 1):
+        for col in range(n + 1):
+            if col == 0:
+                list_binomial[row][col] = 1
+                continue
+
+            list_binomial[row][col] = list_binomial[row - 1][col - 1] + list_binomial[row - 1][col]
+
+    print(f'#{test_case} {list_binomial[n][a]}')
