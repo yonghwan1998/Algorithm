@@ -5,9 +5,10 @@ FROM (
         DISTINCT cart_id
     FROM cart_products
     WHERE name  = 'Milk'
-    UNION ALL
-    SELECT
     
+    UNION ALL
+    
+    SELECT
         DISTINCT cart_id
     FROM cart_products 
     WHERE name  = 'Yogurt'
